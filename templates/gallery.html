@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 data-aos="fade-down" data-aos-duration="800">Creative Gallery</h1>
+
+<!-- === Filter Buttons === -->
+<div style="margin-bottom: 1.5rem; text-align: center;">
+  <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
+  <button class="filter-btn" onclick="filterGallery('videos', this)">🎥 Videos</button>
+  <button class="filter-btn" onclick="filterGallery('photos', this)">📸 Photo Edits</button>
+  <button class="filter-btn" onclick="filterGallery('posters', this)">🖼️ Posters</button>
+</div>
+
+<!-- === Video Section === -->
+<div class="gallery-section videos fade" data-aos="fade-up" style="display: block;">
+  <h2>🎥 Video Editing Showcase</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+    <div style="flex: 1 1 45%;">
+      <iframe width="100%" height="250" src="https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE"
+        title="Video edit" frameborder="0" allowfullscreen></iframe>
+      <p style="margin-top: 5px;">CapCut Edit – Motion Sync</p>
+    </div>
+  </div>
+</div>
+
+<!-- === Photo Edit Section === -->
+<div class="gallery-section photos fade" data-aos="fade-up" style="display: block;">
+  <h2>📸 Photo Editing – Before & After</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+    <div style="flex: 1 1 22%; max-width: 220px; background: #fff; border-radius: 8px; padding: 0.75rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+      <h4 style="font-size: 1rem;">Portrait Retouch</h4>
+      <p style="font-size: 0.85rem;">Edited in Lightroom</p>
+      <div style="display: flex; gap: 6px;">
+        <a href="{{ url_for('static', filename='images/before.jpg') }}" data-lightbox="edit1" data-title="Before Edit">
+          <img src="{{ url_for('static', filename='images/before.jpg') }}" alt="Before" style="width: 100%; border-radius: 4px; cursor: zoom-in;">
+        </a>
+        <a href="{{ url_for('static', filename='images/after.jpg') }}" data-lightbox="edit1" data-title="After Edit">
+          <img src="{{ url_for('static', filename='images/after.jpg') }}" alt="After" style="width: 100%; border-radius: 4px; cursor: zoom-in;">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- === Poster Section === -->
+<div class="gallery-section posters fade" data-aos="fade-up" style="display: block;">
+  <h2>🖼️ Poster Designs</h2>
+  <p>Posters created using Canva, Photoshop and other tools.</p>
+
+  <!-- Search bar -->
+  <div style="margin-bottom: 1rem; text-align: center;">
+    <input type="text" id="posterSearch" onkeyup="searchPosters()" placeholder="Search posters by name..."
+           style="padding: 10px; width: 300px; border-radius: 6px; border: 1px solid #ccc;">
+  </div>
+
+  <div id="posterContainer" style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: 1rem;">
+    {% for poster in [
+      ['accenture.png', 'Accenture Recruitment Poster'],
+      ['BBA ENGLISH PARTNER.png', 'BBA – English Partner'],
+      ['BBA INTELLIPAAT.png', 'BBA – Intellipaat Collaboration'],
+      ['BCOM ENGLISH PARTNER.png', 'BCom – English Partner'],
+      ['BCOM INTELLIPAAT.png', 'BCom – Intellipaat Collaboration']
+    ] %}
+    <div class="poster-card" style="flex: 1 1 22%; max-width: 200px; background: white; padding: 0.75rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+      <a href="{{ url_for('static', filename='images/posters/' ~ poster[0]) }}" data-lightbox="posters" data-title="{{ poster[1] }}">
+        <img src="{{ url_for('static', filename='images/posters/' ~ poster[0]) }}" alt="{{ poster[1] }}" style="width: 100%; max-height: 180px; object-fit: cover; border-radius: 6px; cursor: zoom-in;">
+      </a>
+      <p class="poster-title" style="font-size: 0.9rem; text-align: center; margin-top: 0.5rem;">{{ poster[1] }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  function filterGallery(tag, btn) {
+    const sections = document.querySelectorAll('.gallery-section');
+    const buttons = document.querySelectorAll('.filter-btn');
+    buttons.forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    sections.forEach(sec => {
+      if (tag === 'all' || sec.classList.contains(tag)) {
+        sec.style.opacity = 0;
+        sec.style.display = 'block';
+        setTimeout(() => {
+          sec.style.opacity = 1;
+        }, 50);
+      } else {
+        sec.style.opacity = 0;
+        setTimeout(() => {
+          sec.style.display = 'none';
+        }, 200);
+      }
+    });
+  }
+
+  function searchPosters() {
+    const input = document.getElementById("posterSearch");
+    const filter = input.value.toLowerCase();
+    const posters = document.querySelectorAll("#posterContainer .poster-card");
+
+    posters.forEach(poster => {
+      const title = poster.querySelector(".poster-title").textContent.toLowerCase();
+      poster.style.display = title.includes(filter) ? "block" : "none";
+    });
+  }
+</script>
+
+<style>
+  .filter-btn {
+    background-color: #e0e0e0;
+    border: none;
+    padding: 8px 16px;
+    margin: 4px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+  }
+  .filter-btn:hover {
+    background-color: #d4f1ff;
+  }
+  .filter-btn.active {
+    background-color: #00f0ff;
+    color: black;
+  }
+  .gallery-section.fade {
+    transition: opacity 0.3s ease-in-out;
+  }
+</style>
+{% endblock %}

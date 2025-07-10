@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section data-aos="fade-down">
+  <h1>Hi, I'm Nandan 👋</h1>
+  <p class="lead">
+    A passionate student, creative editor, and aspiring technologist — combining academic excellence with visual storytelling through design and video.
+  </p>
+</section>
+
+<section class="profile-section" data-aos="fade-up" data-aos-delay="150">
+  <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Profile Photo" class="profile-img" />
+</section>
+
+<section data-aos="fade-up" data-aos-delay="200" style="margin-top: 2rem;">
+  <h2>🎯 About Me</h2>
+  <p>
+    I'm currently pursuing my Bachelor's degree, specializing in emerging fields like Data Science and Cybersecurity. While I strive for academic excellence, I also enjoy visual creativity through photo and video editing.
+  </p>
+  <p>
+    I'm experienced with tools like Python, Flask, Lightroom, DaVinci Resolve, and Canva. My passion lies in blending technical expertise with design intuition, whether that's denoising medical scans or designing event posters.
+  </p>
+</section>
+
+<section class="highlight-grid" data-aos="fade-up" data-aos-delay="300">
+  <div class="highlight-card">
+    <h3>🎓 Education</h3>
+    <p>Final Year UG Student - BCA/BSc/BCom</p>
+  </div>
+  <div class="highlight-card">
+    <h3>🛠️ Skills</h3>
+    <p>Python, Machine Learning, HTML/CSS/JS, Video Editing</p>
+  </div>
+  <div class="highlight-card">
+    <h3>🚀 Projects</h3>
+    <p>DU-GAN, Portfolio Website, Certificate Viewer</p>
+  </div>
+</section>
+
+<section class="timeline-section" data-aos="fade-up" data-aos-delay="350" style="margin-top: 3rem;">
+  <h2>📅 Achievements Timeline</h2>
+  <ul class="timeline">
+    <li><span>2023</span> Completed Cybersecurity certification from Microsoft</li>
+    <li><span>2024</span> Developed DU-GAN for LDCT denoising as Final Year Project</li>
+    <li><span>2024</span> Created professional multi-page portfolio with Flask</li>
+    <li><span>2025</span> Led content design and video edits for college events</li>
+  </ul>
+</section>
+
+<section data-aos="fade-up" data-aos-delay="400" style="margin-top: 2rem;">
+  <h2>🌟 Quote I Live By</h2>
+  <blockquote>
+    "Stay curious, stay humble, and never stop creating."
+  </blockquote>
+</section>
+
+<style>
+  .lead {
+    font-size: 1.2rem;
+    color: var(--text-color);
+  }
+  .profile-section {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+  }
+  .profile-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #00f0ff;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+  }
+  .highlight-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  .highlight-card {
+    background: var(--bg-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.05);
+    flex: 1 1 250px;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  .highlight-card:hover {
+    transform: translateY(-6px);
+  }
+  .highlight-card h3 {
+    color: #00f0ff;
+    margin-bottom: 0.5rem;
+  }
+  .timeline-section h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .timeline {
+    list-style: none;
+    padding: 0;
+    max-width: 700px;
+    margin: auto;
+  }
+  .timeline li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+  }
+  .timeline li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: #00f0ff;
+  }
+  .timeline span {
+    font-weight: bold;
+    margin-right: 0.5rem;
+    color: #00f0ff;
+  }
+  blockquote {
+    border-left: 4px solid #00f0ff;
+    padding-left: 1rem;
+    font-style: italic;
+    color: var(--text-color);
+  }
+</style>
+{% endblock %}

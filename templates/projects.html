@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 data-aos="fade-down" data-aos-duration="800">My Projects</h1>
+
+<div class="project-card"
+     data-aos="zoom-in-up"
+     data-aos-duration="1000"
+     style="background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); padding: 1.5rem; margin-bottom: 2rem;">
+    <h2>DU-GAN – GAN for Low-Dose CT Denoising</h2>
+    <p><strong>Problem:</strong> Low-dose CT scans are noisy and reduce diagnostic quality.</p>
+    <p><strong>Solution:</strong> Implemented a dual U-Net GAN (DU-GAN) to denoise LDCT scans using PyTorch.</p>
+    <p><strong>Tools:</strong> PyTorch, GAN, U-Net, Python, CUDA</p>
+</div>
+
+<div class="project-card"
+     data-aos="zoom-in-up"
+     data-aos-delay="150"
+     data-aos-duration="1000"
+     style="background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); padding: 1.5rem; margin-bottom: 2rem;">
+    <h2>AI/ML for Environment-Adaptive Vehicle Safety</h2>
+    <p><strong>Goal:</strong> Predict optimal vehicle speed & braking based on environment.</p>
+    <p><strong>Contribution:</strong> Developed AI/ML model with predictive analytics to improve performance & safety.</p>
+    <p><strong>Tools:</strong> Python, Machine Learning, Data Analytics</p>
+</div>
+
+{% endblock %}

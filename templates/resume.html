@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 data-aos="fade-down" data-aos-duration="800">My Resume</h1>
+<p data-aos="fade-up" data-aos-delay="100">Click the button below to view my full resume:</p>
+
+<div style="text-align: center; margin: 2rem 0;">
+  <a href="{{ url_for('static', filename='resume/Nandan_Resume.pdf') }}" target="_blank" class="view-btn">📄 View My Full Resume</a>
+</div>
+
+<hr style="margin: 2rem 0;" data-aos="fade-up" data-aos-delay="300">
+
+<!-- Skill Cards Section -->
+<div class="skill-cards" data-aos="fade-up" data-aos-delay="400">
+  <div class="skill-card">
+    <h3>💻 Skills & Tools</h3>
+    <ul>
+      <li>🐍 Python, Data Analytics, Machine Learning</li>
+      <li>🔐 Cybersecurity (Microsoft Certified)</li>
+      <li>🧾 MS Word, Excel, PowerPoint</li>
+      <li>🎬 CapCut, Lightroom, DaVinci Resolve</li>
+    </ul>
+  </div>
+
+  <div class="skill-card">
+    <h3>🌐 Languages</h3>
+    <ul>
+      <li>🇬🇧 English</li>
+      <li>🇮🇳 Kannada</li>
+      <li>🇮🇳 Hindi</li>
+    </ul>
+  </div>
+
+  <div class="skill-card">
+    <h3>📜 Certifications</h3>
+    <ul>
+      <li>🛡️ Cybersecurity – Microsoft</li>
+      <li>📊 Data Analytics with Python</li>
+    </ul>
+  </div>
+</div>
+
+<hr style="margin: 3rem 0;" data-aos="fade-up" data-aos-delay="1000">
+<h2 data-aos="fade-left" data-aos-delay="1100">📜 Certificates</h2>
+<div class="cert-pdf-grid" data-aos="fade-up" data-aos-delay="1200">
+  <div class="cert-pdf-card">
+    <img src="{{ url_for('static', filename='certificates/cybersecurity.jpg') }}" alt="Cybersecurity Certificate" style="width: 100%; border-radius: 6px;" />
+    <p>Cybersecurity – Microsoft</p>
+    <a href="{{ url_for('static', filename='certificates/cybersecurity.pdf') }}" target="_blank" class="view-btn">View Full PDF</a>
+  </div>
+  <div class="cert-pdf-card">
+    <img src="{{ url_for('static', filename='certificates/data_analytics.jpg') }}" alt="Data Analytics Certificate" style="width: 100%; border-radius: 6px;" />
+    <p>Data Analytics with Python</p>
+    <a href="{{ url_for('static', filename='certificates/data_analytics.pdf') }}" target="_blank" class="view-btn">View Full PDF</a>
+  </div>
+</div>
+
+<style>
+  .skill-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  .skill-card {
+    background: var(--bg-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+    flex: 1 1 280px;
+    min-width: 250px;
+    transition: transform 0.3s;
+  }
+  .skill-card:hover {
+    transform: translateY(-6px);
+  }
+  .skill-card h3 {
+    color: #00f0ff;
+    margin-bottom: 1rem;
+  }
+  .skill-card ul {
+    list-style: none;
+    padding: 0;
+    color: var(--text-color);
+  }
+  .skill-card ul li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .skill-card ul li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: #00f0ff;
+  }
+
+  .cert-pdf-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  .cert-pdf-card {
+    width: 250px;
+    background: var(--bg-color);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.08);
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  .cert-pdf-card:hover {
+    transform: scale(1.03);
+  }
+  .cert-pdf-card p {
+    margin-top: 10px;
+    font-weight: bold;
+    color: var(--text-color);
+  }
+  .view-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 14px;
+    background-color: #00f0ff;
+    color: #000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  .view-btn:hover {
+    background-color: #00cce5;
+  }
+</style>
+{% endblock %}

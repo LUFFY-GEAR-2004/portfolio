@@ -1,0 +1,1 @@
+// JS for image/video interactivity
